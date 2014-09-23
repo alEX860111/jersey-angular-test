@@ -1,6 +1,13 @@
 <html>
-<body>
-test
+<head>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-app="myapp">
+	<div ng-controller="myctrl">
+		<ul>
+			<li ng-repeat="product in products">{{product.name}}</li>
+		</ul>
+	</div>
 </body>
-
 </html>
