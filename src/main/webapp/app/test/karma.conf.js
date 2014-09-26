@@ -1,23 +1,20 @@
 module.exports = function(config) {
-    config.set({
+	config.set({
 
-        basePath: '../',
+		basePath : "../",
 
-        files: [
-            'test/spec/**/*.js'
-        ],
+		files : ["bower_components/angular/angular.min.js",
+				 "bower_components/angular-mocks/angular-mocks.js",
+				 "scripts/**/*.js",
+				 "test/spec/**/*.js"],
 
-        autoWatch: false,
-        singleRun: true,
+		autoWatch : false,
+		singleRun : true,
 
-        frameworks: ['jasmine'],
+		frameworks : [ 'jasmine' ],
 
-        browsers: ['Chrome'],
+		browsers : [ 'Chrome' ],
 
-        plugins: [
-            'karma-chrome-launcher',
-            'karma-jasmine'
-        ],
-
-    });
+		plugins : [ 'karma-chrome-launcher', 'karma-jasmine' ],
+	});
 };
