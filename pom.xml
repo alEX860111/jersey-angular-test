@@ -9,6 +9,9 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<jersey-version>2.12</jersey-version>
+		<servlet-version>3.1.0</servlet-version>
+		<guice-servlet-version>3.0</guice-servlet-version>
+		<guice-bridge-version>2.3.0</guice-bridge-version>
 		<junit-version>4.9</junit-version>
 	</properties>
 	<dependencies>
@@ -30,17 +33,17 @@
 		<dependency>
 			<groupId>org.glassfish.hk2</groupId>
 			<artifactId>guice-bridge</artifactId>
-			<version>2.3.0</version>
+			<version>${guice-bridge-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.inject.extensions</groupId>
 			<artifactId>guice-servlet</artifactId>
-			<version>3.0</version>
+			<version>${guice-servlet-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
+			<version>${servlet-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -53,12 +56,19 @@
 		<finalName>testapp</finalName>
 		<plugins>
 			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<packagingExcludes>app/node_modules</packagingExcludes>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.3.2</version>
 				<executions>
 					<execution>
-						<id>1</id>
+						<id>dev-tools</id>
 						<phase>generate-sources</phase>
 						<goals>
 							<goal>exec</goal>
@@ -72,7 +82,21 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>2</id>
+						<id>client-side-dependencies</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>bower</executable>
+							<workingDirectory>src/main/webapp/app</workingDirectory>
+							<arguments>
+								<argument>install</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>client-unit-test</id>
 						<phase>test</phase>
 						<goals>
 							<goal>exec</goal>
