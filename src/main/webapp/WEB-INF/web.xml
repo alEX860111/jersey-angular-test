@@ -13,10 +13,8 @@
 		</servlet-class>
 
 		<init-param>
-			<param-name>jersey.config.server.provider.packages</param-name>
-			<param-value>
-				ngdemo.rest
-			</param-value>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>ngdemo.app.Application</param-value>
 		</init-param>
 
 		<load-on-startup>1</load-on-startup>
@@ -24,7 +22,22 @@
 
 	<servlet-mapping>
 		<servlet-name>jersey-servlet</servlet-name>
-		<url-pattern>/rest/*</url-pattern>
+		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
+
+	<filter>
+		<filter-name>guice-filter</filter-name>
+		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+		<async-supported>true</async-supported>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>guice-filter</filter-name>
+		<url-pattern>/api/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>ngdemo.app.InjectorInitializer</listener-class>
+	</listener>
 
 </web-app>

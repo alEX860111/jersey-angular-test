@@ -7,7 +7,7 @@ describe("ProductCtrl", function() {
 
 	beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
 		mockBackend = _$httpBackend_;
-		mockBackend.expectGET("/testapp/rest/products").respond(["1", "2"]);
+		mockBackend.expectGET("/testapp/api/products").respond(["1", "2"]);
 		scope = $rootScope.$new();
 
 		ctrl = $controller("ProductCtrl", {

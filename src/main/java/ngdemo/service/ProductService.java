@@ -5,7 +5,7 @@ import java.util.List;
 
 import ngdemo.domain.Product;
 
-public class ProductService {
+final class ProductService implements IProductService {
 
     public List<Product> getProducts() {
         Product product1 = new Product();

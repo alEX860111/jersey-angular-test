@@ -7,11 +7,11 @@ public class Product {
     private String name;
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String firstName) {
-        this.name = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }
