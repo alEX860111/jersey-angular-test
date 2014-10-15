@@ -151,7 +151,7 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>grunt</executable>
+							<executable>src/main/webapp/app/node_modules/.bin/grunt.cmd</executable>
 							<workingDirectory>src/main/webapp/app</workingDirectory>
 							<arguments>
 								<argument>karma</argument>
@@ -165,7 +165,7 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>grunt</executable>
+							<executable>src/main/webapp/app/node_modules/.bin/grunt.cmd</executable>
 							<workingDirectory>src/main/webapp/app</workingDirectory>
 							<arguments>
 								<argument>protractor</argument>
